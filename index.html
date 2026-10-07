@@ -1,303 +1,351 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aiden Shin — Business & Technology</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Aiden Shin</title>
+  <meta name="description" content="I’m Aiden Shin. I work in AI strategy and tech consulting, and spend much of my free time building and learning with AI. I’m now developing NodeSearch with Alp Unsal at Grenadir Labs.">
+  <meta name="theme-color" content="#120f1f">
+  <meta property="og:title" content="Aiden Shin">
+  <meta property="og:description" content="I work in AI strategy and tech consulting, and spend much of my free time building and learning with AI.">
+  <meta property="og:image" content="images/web/hero-sunset-1600.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23120f1f'/%3E%3Ccircle cx='13' cy='17' r='7' fill='%23f2a65a'/%3E%3Cellipse cx='13' cy='17' rx='12' ry='3.2' fill='none' stroke='%23f3eadb' stroke-width='1.4' transform='rotate(-18 13 17)'/%3E%3Ccircle cx='25' cy='7' r='1.6' fill='%23f3eadb'/%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/atkinson-regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
-
+  <script>
+    // Runs before paint so the first frame already knows about JS and motion preferences.
+    (function () {
+      var root = document.documentElement;
+      root.classList.remove('no-js');
+      root.classList.add('js');
+      var motion = null;
+      try { motion = localStorage.getItem('motion'); } catch (e) {}
+      if (motion !== 'on' && motion !== 'off') {
+        motion = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'off' : 'on';
+      }
+      root.dataset.motion = motion;
+    })();
+  </script>
+  <script type="module" src="js/main.js"></script>
 </head>
 <body>
-  <header class="header">
-    <nav class="nav container">
-      <a href="#" class="nav-logo" aria-label="Aiden Shin home">
-        <!-- Canoe paddle logo -->
-        <svg class="logo-paddle" width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 80 L50 10 L55 12 L30 78 Z" fill="currentColor" opacity="0.9"/>
-          <ellipse cx="25" cy="82" rx="12" ry="6" fill="currentColor" opacity="0.7" transform="rotate(-15 25 82)"/>
-        </svg>
-        <span>AS</span>
-      </a>
-      <button class="nav-toggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <ul class="nav-links">
-        <li><a href="#trail">The Trail</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#interests">Interests</a></li>
-        <li><a href="#signal">Contact</a></li>
-      </ul>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="nebula" aria-hidden="true"></div>
+  <canvas class="sky" aria-hidden="true"></canvas>
+
+  <header class="bar">
+    <a class="brand" href="#home">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <circle cx="13" cy="17" r="6.5" fill="currentColor"/>
+        <ellipse cx="13" cy="17" rx="12" ry="3.2" fill="none" stroke="var(--cream)" stroke-width="1.4" transform="rotate(-18 13 17)"/>
+        <circle cx="26" cy="6" r="1.6" fill="var(--cream)"/>
+      </svg>
+      <span>Aiden Shin</span>
+    </a>
+    <nav class="route" aria-label="Main">
+      <ol class="route-list">
+        <li><a href="#about" data-route="about"><span class="route-star" aria-hidden="true"></span><span class="route-label">About me</span></a></li>
+        <li><a href="#building" data-route="building"><span class="route-star" aria-hidden="true"></span><span class="route-label">Building</span></a></li>
+        <li><a href="#projects" data-route="projects"><span class="route-star" aria-hidden="true"></span><span class="route-label">Projects</span></a></li>
+        <li><a href="#more" data-route="more"><span class="route-star" aria-hidden="true"></span><span class="route-label">More</span></a></li>
+      </ol>
     </nav>
+    <button class="motion-toggle" type="button" aria-pressed="true">
+      <span class="motion-icon" aria-hidden="true"></span>
+      <span class="motion-text">Motion</span>
+    </button>
   </header>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-bg"></div>
-      <div class="hero-overlay"></div>
-      <div class="container hero-content">
-        <p class="hero-coordinates">43.0096&deg; N &middot; 81.2737&deg; W</p>
-        <h1 class="hero-name">Aiden Shin</h1>
-        <h2 class="hero-tagline">Navigating the intersection of business &amp; technology.</h2>
-        <p class="hero-description">
-          I am passionate about AI Strategy and Business Operations,
-          specifically how emerging tech can optimize or reinvent legacy systems.
-          Always happy to connect and meet new people especially if you share
-          these interests or one of my other interests like skiing, backcountry
-          canoe camping, or hiking.
-        </p>
-        <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">View My Work</a>
-          <a href="#signal" class="btn btn-outline">Send a Signal</a>
-        </div>
+  <main id="main">
+
+    <!-- Stop 0: the shore at dusk -->
+    <section class="stop stop-home" id="home" data-stop="home" data-title="Aiden Shin" aria-labelledby="home-title">
+      <div class="home-photo" aria-hidden="true">
+        <picture>
+          <source type="image/webp" srcset="images/web/hero-sunset-800.webp 800w, images/web/hero-sunset-1600.webp 1600w" sizes="100vw">
+          <img src="images/web/hero-sunset-1600.jpg" srcset="images/web/hero-sunset-800.jpg 800w, images/web/hero-sunset-1600.jpg 1600w" sizes="100vw" alt="" width="1600" height="1200" fetchpriority="high">
+        </picture>
       </div>
-      <!-- Scroll indicator -->
-      <div class="scroll-hint">
-        <span>Paddle down</span>
-        <svg width="20" height="30" viewBox="0 0 20 30" fill="none">
-          <path d="M10 0 L10 24 M4 18 L10 24 L16 18" stroke="currentColor" stroke-width="2"/>
-        </svg>
+      <div class="stop-inner home-inner">
+        <div class="home-copy">
+          <h1 id="home-title" tabindex="-1">Aiden Shin</h1>
+          <p class="lede">I work in AI strategy and tech consulting, and spend much of my free time building and learning with AI.</p>
+          <p class="lede lede-soft">Outside of building, I love learning about space and exploring the outdoors.</p>
+          <a class="launch" href="#about">
+            <span>Start with About me</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <nav class="constellation" aria-labelledby="constellation-title">
+          <h2 id="constellation-title" class="constellation-title">The route so far</h2>
+          <svg class="constellation-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <polyline points="4,94 12,81 22,68 34,55 46,42 64,28 88,12"/>
+          </svg>
+          <ol class="constellation-list">
+            <li style="--x:4;--y:94"><a href="#where-it-started"><span class="c-star" aria-hidden="true"></span><span class="c-text">2023 business-development map</span></a></li>
+            <li style="--x:12;--y:81"><a href="#small-projects"><span class="c-star" aria-hidden="true"></span><span class="c-text">Home audio tool</span></a></li>
+            <li style="--x:22;--y:68"><a href="#block-blast"><span class="c-star" aria-hidden="true"></span><span class="c-text">Block Blast experiments</span></a></li>
+            <li style="--x:34;--y:55"><a href="#coordinating-agents"><span class="c-star" aria-hidden="true"></span><span class="c-text">Research agents</span></a></li>
+            <li style="--x:46;--y:42"><a href="#company-knowledge"><span class="c-star" aria-hidden="true"></span><span class="c-text">Corporate RAG work</span></a></li>
+            <li style="--x:64;--y:28"><a href="#veridrome"><span class="c-star" aria-hidden="true"></span><span class="c-text">Veridrome</span></a></li>
+            <li style="--x:88;--y:12" class="is-now"><a href="#nodesearch"><span class="c-star" aria-hidden="true"></span><span class="c-text">NodeSearch</span></a></li>
+          </ol>
+        </nav>
       </div>
     </section>
 
-    <!-- Parallax divider -->
-    <div class="parallax-divider parallax-canoes" role="img" aria-label="Backcountry campsite"></div>
+    <!-- Stop 1 -->
+    <section class="stop" id="about" data-stop="about" data-title="About me" aria-labelledby="about-title">
+      <div class="stop-inner">
+        <p class="stop-count">Stop 1 of 4</p>
+        <h1 id="about-title" class="stop-title" tabindex="-1">About me</h1>
 
-    <!-- The Trail (Experience) -->
-    <section id="trail" class="section section-dark">
-      <div class="container">
-        <h2 class="section-title">
-          <svg class="section-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M3 21L8 11L13 17L18 7L21 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          The Trail
-        </h2>
-        <div class="timeline">
-          <!-- Experience items -->
-          <div class="timeline-item">
-            <div class="timeline-marker">
-              <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-            </div>
-            <div class="timeline-content">
-              <span class="timeline-date">Sept 2025 &mdash; Dec 2025</span>
-              <h3>Cyber Research Assistant</h3>
-              <p class="timeline-company">Ivey Business School &middot; London, ON</p>
-              <ul class="timeline-details">
-                <li>Developed autonomous agent-based pipelines using Gumloop and Antigravity to automate industry-scale data collection and API-driven cleaning workflows for cybersecurity.</li>
-                <li>Utilized K-Means clustering for industry segmentation and supervised learning to quantify the correlation between software vulnerabilities and financial value loss.</li>
-              </ul>
-            </div>
-          </div>
+        <div class="prose">
+          <p>Hi, I’m Aiden. I’ve always been deeply curious about the natural world around me and how everything works. I spent my childhood immersed in several obsessions, most notably backcountry canoe camping and Scrabble, where I competed in the international Scrabble championship twice (yes, that’s a thing).</p>
 
-          <div class="timeline-item">
-            <div class="timeline-marker">
-              <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-            </div>
-            <div class="timeline-content">
-              <span class="timeline-date">May 2025 &mdash; Aug 2025</span>
-              <h3>Assurance Intern</h3>
-              <p class="timeline-company">PwC &middot; Toronto, ON</p>
-              <ul class="timeline-details">
-                <li>Conducted stakeholder interviews to map complex operational workflows and performed strategic risk assessments to identify and mitigate business process gaps.</li>
-                <li>Leveraged advanced Excel data transformations to validate integrity across large-scale datasets and synthesized findings into executive deliverables.</li>
-              </ul>
-            </div>
-          </div>
+          <figure class="photo photo-scrabble">
+            <picture>
+              <source type="image/webp" srcset="images/web/scrabble-championship-640.webp">
+              <img src="images/web/scrabble-championship-640.jpg" width="640" height="426" loading="lazy" decoding="async" alt="Childhood Scrabble tournament photograph, showing two young competitors holding awards with two adults.">
+            </picture>
+            <figcaption>Scrabble was one of my childhood obsessions.</figcaption>
+          </figure>
 
-          <div class="timeline-item">
-            <div class="timeline-marker">
-              <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-            </div>
-            <div class="timeline-content">
-              <span class="timeline-date">May 2023 &mdash; Aug 2023</span>
-              <h3>Business Development Analyst</h3>
-              <p class="timeline-company">Paragon Systems &middot; Concord, ON</p>
-              <ul class="timeline-details">
-                <li>Synthesized multi-source data to build multi-dimensional 3D models for forecasting project outcomes, driving a strategic pivot that resulted in a successful national launch.</li>
-                <li>Integrated AI technology to automate lead categorization and industry mapping, revolutionizing the business development engine.</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Extracurriculars -->
-          <div class="timeline-divider">
-            <span>Side Trails</span>
-          </div>
-
-          <div class="timeline-item timeline-extra">
-            <div class="timeline-marker">
-              <svg width="16" height="16" viewBox="0 0 16 16"><polygon points="8,2 14,14 2,14" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-            </div>
-            <div class="timeline-content">
-              <span class="timeline-date">Sept 2025 &mdash; Dec 2025</span>
-              <h3>Fellow</h3>
-              <p class="timeline-company">RBC Design Thinking Program &middot; London, ON</p>
-              <ul class="timeline-details">
-                <li>$3,500 award. Worked in cross-functional teams leveraging design thinking to introduce emerging technologies to underserved Canadian markets.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="timeline-item timeline-extra">
-            <div class="timeline-marker">
-              <svg width="16" height="16" viewBox="0 0 16 16"><polygon points="8,2 14,14 2,14" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-            </div>
-            <div class="timeline-content">
-              <span class="timeline-date">Jun 2024 &mdash; Mar 2025</span>
-              <h3>VP Operations</h3>
-              <p class="timeline-company">Western Cyber Society &middot; London, ON</p>
-              <ul class="timeline-details">
-                <li>Western's largest tech club (800+ members). Oversaw all operations including planning and MC of the Toronto Tech Expo (100+ attendees).</li>
-              </ul>
-            </div>
-          </div>
+          <p>While studying economics and business at Western University, I became deeply interested in learning about AI and building new things with it. This really kicked off during my first-year internship, where I began experimenting with AI to develop a statistical market research engine.</p>
+          <p>Now, AI in 2023 was substantially more limited than it is today, but working with it to build real things back then kicked off how I would spend the next couple of years.</p>
+          <p>Since then, I’ve applied myself to a number of projects across the AI space, trying to build things of real value in the real world and building smaller, fun projects to supplement my learning about new areas.</p>
+          <p>Today, I spend my days working in AI strategy and tech consulting, and my nights and weekends exploring new ways that AI can drive real change in the world.</p>
         </div>
+
+        <ul class="shore-strip" aria-label="Photos from the outdoors">
+          <li>
+            <picture>
+              <source type="image/webp" srcset="images/web/campsite-canoes-800.webp">
+              <img src="images/web/campsite-canoes-800.jpg" width="600" height="800" loading="lazy" decoding="async" alt="A backcountry campsite on rock above a lake, with packs on the ground and a canoe pulled up on the shore.">
+            </picture>
+          </li>
+          <li>
+            <picture>
+              <source type="image/webp" srcset="images/web/lake-shore-800.webp">
+              <img src="images/web/lake-shore-800.jpg" width="600" height="800" loading="lazy" decoding="async" alt="A pine on a rocky shoreline beside a blue lake, with canoes resting upside down under the tree.">
+            </picture>
+          </li>
+          <li>
+            <picture>
+              <source type="image/webp" srcset="images/web/autumn-trail-800.webp">
+              <img src="images/web/autumn-trail-800.jpg" width="600" height="800" loading="lazy" decoding="async" alt="A leaf-covered trail through tall trees in autumn yellow.">
+            </picture>
+          </li>
+        </ul>
+
+        <nav class="next-stop" aria-label="Continue the route">
+          <a class="next-link" href="#building" rel="next"><span class="next-kicker">Next stop</span><span class="next-name">Learning by building</span></a>
+        </nav>
       </div>
     </section>
 
-    <!-- Parallax divider: Misty forest -->
-    <div class="parallax-divider parallax-forest" role="img" aria-label="Misty pine forest trail"></div>
+    <!-- Stop 2 -->
+    <section class="stop" id="building" data-stop="building" data-title="Learning by building" aria-labelledby="building-title">
+      <div class="stop-inner">
+        <p class="stop-count">Stop 2 of 4</p>
+        <h1 id="building-title" class="stop-title" tabindex="-1">Learning by building</h1>
 
-    <!-- Projects -->
-    <section id="projects" class="section">
-      <div class="topo-pattern"></div>
-      <div class="container">
-        <h2 class="section-title">
-          <svg class="section-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
-            <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
-            <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
-            <rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
-          </svg>
-          Projects
-        </h2>
+        <article class="chapter" id="where-it-started" aria-labelledby="where-it-started-title">
+          <h2 id="where-it-started-title" tabindex="-1">Where it started</h2>
+          <div class="prose">
+            <p>During my summer internship in 2023, I designed and built an interactive 3D map to support business development. The question behind it was where a business should expand next.</p>
+            <p>I used web scraping and other data-collection techniques to bring together thousands of request-for-proposal (RFP) records and satellite data. Then I built statistical models to explore potential projects, competition in different areas and the revenue an expansion might support.</p>
+            <p>The goal was to make a complicated location decision easier to investigate. For me, it was also an introduction to using AI to work through unfamiliar problems. I kept finding other things I wanted to try building.</p>
+          </div>
 
-        <!-- Featured project -->
-        <article class="project-featured">
-          <div class="project-label">Co-Founded &middot; Jun 2025 &mdash; Present</div>
-          <h3>GreenVine AI Consulting</h3>
-          <p>
-            Co-founded an AI upskilling startup running hands-on client workshops
-            that help employees at professional service firms learn to implement
-            and leverage AI in their day-to-day workflows.
-          </p>
-          <ul class="project-tech">
-            <li>AI/ML</li>
-            <li>Workshop Design</li>
-            <li>Client Training</li>
-            <li>Enterprise AI</li>
+          <figure class="illustration globe-figure" data-globe>
+            <div class="illustration-tag">Illustration</div>
+            <div class="globe-stage">
+              <canvas class="globe-canvas" role="img" aria-label="A dotted globe that can be dragged to rotate, with optional layers of made-up points."></canvas>
+            </div>
+            <fieldset class="layer-toggles">
+              <legend>Data layers</legend>
+              <button type="button" class="chip chip-rfp" data-layer="rfp" aria-pressed="true"><span class="chip-dot" aria-hidden="true"></span>RFP records</button>
+              <button type="button" class="chip chip-sat" data-layer="sat" aria-pressed="false"><span class="chip-dot" aria-hidden="true"></span>Satellite data</button>
+              <button type="button" class="chip chip-model" data-layer="model" aria-pressed="false"><span class="chip-dot" aria-hidden="true"></span>Model estimates</button>
+            </fieldset>
+            <figcaption>An illustration of the idea behind the 2023 map: separate layers of information on one surface, so a location question can be explored. The points are invented and are not project data.</figcaption>
+          </figure>
+        </article>
+
+        <article class="chapter" id="small-projects" aria-labelledby="small-projects-title">
+          <h2 id="small-projects-title" tabindex="-1">Small projects with real questions</h2>
+          <div class="prose">
+            <p>Some projects were practical. At home, I built a web tool to control the sound systems around the house, giving me one place to manage the setup.</p>
+            <p id="block-blast">Others were a way to learn. I taught myself reinforcement learning and neural networks by training small models on my laptop to play Block Blast. The game gave me something tangible to experiment with as I tried to understand how a model learns.</p>
+            <p>Building became part of how I learned. Sometimes I ended up with a tool I could use, and sometimes with a better understanding of the technology.</p>
+          </div>
+
+          <figure class="illustration blast-figure" data-blast>
+            <div class="illustration-tag">Illustration</div>
+            <div class="blast-layout">
+              <div class="blast-board" aria-hidden="true"></div>
+              <div class="blast-panel">
+                <fieldset class="blast-phase">
+                  <legend>How far into training?</legend>
+                  <label><input type="radio" name="blast-phase" value="early" checked> Early on</label>
+                  <label><input type="radio" name="blast-phase" value="later"> After many games</label>
+                </fieldset>
+                <p class="blast-piece-label">Piece to place: a two-block bar. The model scores three possible spots.</p>
+                <ul class="blast-scores">
+                  <li data-move="a"><span class="move-name">Spot A</span><span class="score-bar" aria-hidden="true"><span></span></span><span class="sr-only score-text"></span></li>
+                  <li data-move="b"><span class="move-name">Spot B</span><span class="score-bar" aria-hidden="true"><span></span></span><span class="sr-only score-text"></span></li>
+                  <li data-move="c"><span class="move-name">Spot C</span><span class="score-bar" aria-hidden="true"><span></span></span><span class="sr-only score-text"></span></li>
+                </ul>
+                <div class="blast-actions">
+                  <button type="button" class="btn" data-blast-play>Play the top-scored spot</button>
+                  <button type="button" class="btn btn-quiet" data-blast-reset>Reset</button>
+                </div>
+                <p class="blast-status" aria-live="polite"></p>
+              </div>
+            </div>
+            <figcaption>A simplified picture of a reinforcement-learning idea: the model scores possible moves, moves that clear a line earn a reward, and over many games its scores shift toward rewarded moves. The bars are not results from the project.</figcaption>
+          </figure>
+        </article>
+
+        <article class="chapter" id="coordinating-agents" aria-labelledby="coordinating-agents-title">
+          <h2 id="coordinating-agents-title" tabindex="-1">Learning to coordinate agents</h2>
+          <div class="prose">
+            <p>Along the way, I began experimenting with n8n and Gumloop. Research I worked on with Ivey Business School gave me another problem to explore: automating parts of bug-bounty research and tracking.</p>
+            <p>I built research agents around that work and started learning how to coordinate several agents on the same task. That meant figuring out how to divide the work, pass information between steps and bring the results together.</p>
+            <p>I began thinking more about the system around a model, including the tools it could use, the context it needed and how its work should be checked.</p>
+          </div>
+
+          <figure class="illustration agents-figure" data-agents>
+            <div class="illustration-tag">Illustration</div>
+            <svg class="agents-svg" viewBox="0 0 640 300" role="img" aria-labelledby="agents-svg-title">
+              <title id="agents-svg-title">A task splits into three agents, their results are combined, and the combined work is checked.</title>
+              <g class="agent-paths" fill="none">
+                <path id="ap-1" data-step="1" d="M92 150 C 170 150, 170 62, 250 62"/>
+                <path id="ap-2" data-step="1" d="M92 150 L 250 150"/>
+                <path id="ap-3" data-step="1" d="M92 150 C 170 150, 170 238, 250 238"/>
+                <path id="ap-4" data-step="2" d="M318 62 C 400 62, 400 150, 452 150"/>
+                <path id="ap-5" data-step="2" d="M318 150 L 452 150"/>
+                <path id="ap-6" data-step="2" d="M318 238 C 400 238, 400 150, 452 150"/>
+                <path id="ap-7" data-step="3" d="M500 150 L 560 150"/>
+              </g>
+              <g class="agent-packets"></g>
+              <g class="agent-nodes">
+                <g class="node" data-step="0" transform="translate(60 150)"><circle r="30"/><text dy="5">Task</text></g>
+                <g class="node" data-step="1" transform="translate(284 62)"><circle r="30"/><text dy="5">Agent</text></g>
+                <g class="node" data-step="1" transform="translate(284 150)"><circle r="30"/><text dy="5">Agent</text></g>
+                <g class="node" data-step="1" transform="translate(284 238)"><circle r="30"/><text dy="5">Agent</text></g>
+                <g class="node" data-step="2" transform="translate(478 150)"><circle r="26"/><text dy="5">Join</text></g>
+                <g class="node" data-step="3" transform="translate(590 150)"><circle r="28"/><text dy="5">Check</text></g>
+              </g>
+            </svg>
+            <div class="agents-controls">
+              <button type="button" class="btn" data-agents-step>Step through</button>
+              <p class="agents-caption" aria-live="polite">Press “Step through” to follow a task through the system.</p>
+            </div>
+            <figcaption>An illustration of the general pattern: divide the work, pass information between steps, bring the results together and check them. It does not show a specific project’s design.</figcaption>
+          </figure>
+        </article>
+
+        <nav class="next-stop" aria-label="Continue the route">
+          <a class="next-link" href="#projects" rel="next"><span class="next-kicker">Next stop</span><span class="next-name">Projects and current work</span></a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Stop 3 -->
+    <section class="stop" id="projects" data-stop="projects" data-title="Projects and current work" aria-labelledby="projects-title">
+      <div class="stop-inner">
+        <p class="stop-count">Stop 3 of 4</p>
+        <h1 id="projects-title" class="stop-title" tabindex="-1">Projects and current work</h1>
+
+        <article class="chapter" id="company-knowledge" aria-labelledby="company-knowledge-title">
+          <h2 id="company-knowledge-title" tabindex="-1">Making company knowledge more useful</h2>
+          <div class="prose">
+            <p>I’ve also designed retrieval-augmented generation systems for corporate settings, with the aim of making a company’s own knowledge and intellectual property more accessible to its employees.</p>
+            <p>Case Study Retriever is a small public illustration of that idea. It organizes case studies into searchable records with page-level evidence, so someone can find a useful example and check the claim behind it. The demo currently uses offline metadata search and includes a harness for future model integration.</p>
+          </div>
+          <p><a class="out-link" href="https://github.com/ahhshin/Case-Study-Retriever">Explore Case Study Retriever<span class="sr-only"> (GitHub)</span></a></p>
+        </article>
+
+        <article class="chapter" id="veridrome" aria-labelledby="veridrome-title">
+          <h2 id="veridrome-title" tabindex="-1">Veridrome</h2>
+          <div class="prose">
+            <p>Veridrome was an experiment in using computer-use and vision models for QA automation. I built a prototype around agents interacting with software interfaces and pitched the idea to venture capital investors.</p>
+            <p>It was also part of my path as a founder: taking something I was building and putting a company idea around it. I eventually changed direction and pivoted from Veridrome to pursue NodeSearch.</p>
+          </div>
+        </article>
+
+        <article class="chapter chapter-now" id="nodesearch" aria-labelledby="nodesearch-title">
+          <h2 id="nodesearch-title" tabindex="-1">NodeSearch at Grenadir Labs</h2>
+          <div class="prose">
+            <p>I’m now developing NodeSearch with my co-founder, Alp Unsal, at Grenadir Labs. We’re exploring how AI can help researchers find useful ideas and methods beyond their usual field of view.</p>
+            <p>The question is simple: could an approach from another lab or discipline help with the problem you’re working on? NodeSearch is being built to surface those possibilities and show enough source evidence for a researcher to judge them.</p>
+            <p>Our early prototype brings publications, extracted ideas and evidence into a research workspace. A researcher can begin with a paper or project brief, describe a goal and gap, then inspect candidate contributions. The workspace supports evidence review and discussion briefs; a repeatable live discovery pipeline is the next step.</p>
+            <p>We’re still early, and we need to evaluate the product’s scientific usefulness with researchers. The longer-term direction is proactive discovery: helping useful methods and ideas reach someone who might be able to use them.</p>
+          </div>
+        </article>
+
+        <nav class="next-stop" aria-label="Continue the route">
+          <a class="next-link" href="#more" rel="next"><span class="next-kicker">Next stop</span><span class="next-name">More about my work</span></a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Stop 4 -->
+    <section class="stop" id="more" data-stop="more" data-title="More about my work" aria-labelledby="more-title">
+      <div class="stop-inner">
+        <p class="stop-count">Stop 4 of 4</p>
+        <h1 id="more-title" class="stop-title" tabindex="-1">More about my work</h1>
+
+        <article class="chapter" id="short-bio" aria-labelledby="short-bio-title">
+          <h2 id="short-bio-title" tabindex="-1">Short bio</h2>
+          <div class="prose">
+            <p>I’m Aiden Shin. I work in AI strategy and tech consulting, and spend much of my free time building and learning with AI. My projects have ranged from a 3D business-development map to research agents and experiments with neural networks. I’m now developing NodeSearch with Alp Unsal at Grenadir Labs. Outside of building, I love learning about space and exploring the outdoors.</p>
+          </div>
+        </article>
+
+        <article class="chapter" id="experiments" aria-labelledby="experiments-title">
+          <h2 id="experiments-title" tabindex="-1">Other experiments</h2>
+          <ul class="experiments">
+            <li class="experiment">
+              <h3>Atlas</h3>
+              <p>Atlas is an environmental-data and forecasting research prototype with historical ERA5 experiments and a separate synthetic-data mode. It gives me a place to explore reproducible experiments and their limitations.</p>
+              <a class="out-link" href="https://github.com/ahhshin/Atlas">View Atlas<span class="sr-only"> (GitHub)</span></a>
+            </li>
+            <li class="experiment">
+              <h3>Axelrod2</h3>
+              <p>Axelrod2 is a framework for studying language-model decisions in repeated games, with seeded tournaments and detailed logs. The framework is implemented; substantive findings about model behaviour are still pending.</p>
+              <a class="out-link" href="https://github.com/ahhshin/Axelrod2">View Axelrod2<span class="sr-only"> (GitHub)</span></a>
+            </li>
           </ul>
         </article>
 
-        <div class="projects-grid">
-          <article class="project-card">
-            <div class="project-label">Strategic Advisor &middot; Sept 2025 &mdash; Present</div>
-            <h3>SickKids Innovation</h3>
-            <p>
-              Spearheading transformation of new lab services into serviceable
-              business units. Building market research reports, business plans,
-              and pitch decks for hospital executives.
-            </p>
-            <ul class="project-tech">
-              <li>Market Research</li>
-              <li>Strategy</li>
-              <li>Pitch Decks</li>
-            </ul>
-          </article>
+        <article class="chapter chapter-contact" id="contact" aria-labelledby="contact-title">
+          <h2 id="contact-title" tabindex="-1">Contact</h2>
+          <p class="contact-lede">Have a problem you’re exploring or an idea you’d like to build? I’d like to hear about it.</p>
+          <ul class="contact-links">
+            <li><a class="signal-link" href="mailto:ahh.shin@gmail.com">ahh.shin@gmail.com</a></li>
+            <li><a class="signal-link signal-link-quiet" href="https://github.com/ahhshin">github.com/ahhshin</a></li>
+          </ul>
+        </article>
 
-          <article class="project-card">
-            <div class="project-label">Technical &middot; ML Project</div>
-            <h3>BlockBlast! RL Agent</h3>
-            <p>
-              Built a reinforcement learning system in Python that teaches itself
-              to play the puzzle game "BlockBlast!"
-            </p>
-            <ul class="project-tech">
-              <li>Python</li>
-              <li>Reinforcement Learning</li>
-              <li>Game AI</li>
-            </ul>
-          </article>
+        <nav class="next-stop" aria-label="Continue the route">
+          <a class="next-link next-home" href="#home"><span class="next-kicker">Head back</span><span class="next-name">To the shore</span></a>
+        </nav>
 
-          <article class="project-card">
-            <div class="project-label">Technical &middot; Team ML Project</div>
-            <h3>Spotify Popularity Predictor</h3>
-            <p>
-              Cleaned and synthesized a large Spotify dataset, then performed
-              clustering and supervised learning to predict song popularity.
-            </p>
-            <ul class="project-tech">
-              <li>Python</li>
-              <li>K-Means</li>
-              <li>Supervised ML</li>
-              <li>Data Cleaning</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Parallax divider: Banff lake -->
-    <div class="parallax-divider parallax-lake" role="img" aria-label="Serene lake in Banff National Park"></div>
-
-    <!-- Off the Grid (Interests) -->
-    <section id="interests" class="section section-dark">
-      <div class="container">
-        <h2 class="section-title">
-          <svg class="section-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-            <path d="M12 2 L12 22 M2 12 L22 12" stroke="currentColor" stroke-width="1" opacity="0.5"/>
-            <path d="M12 6 L12 8 M12 16 L12 18 M6 12 L8 12 M16 12 L18 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          Interests
-        </h2>
-        <div class="interests-tiles">
-          <span class="interest-tile">Backcountry Canoe Camping</span>
-          <span class="interest-tile">Skiing</span>
-          <span class="interest-tile">Hiking</span>
-          <span class="interest-tile">International Scrabble</span>
-          <span class="interest-tile">Backpacking &amp; Travel</span>
-          <span class="interest-tile">FIFA</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact (Send a Signal) -->
-    <section id="signal" class="section">
-      <div class="topo-pattern"></div>
-      <div class="container">
-        <h2 class="section-title">
-          <svg class="section-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          </svg>
-          Send a Signal
-        </h2>
-        <div class="contact-content">
-          <p>
-            I'm graduating in 2026 and open to new opportunities in Tech,
-            Consulting, Business Development and AI. Whether you want to
-            collaborate, chat about canoe routes, or challenge me to
-            Scrabble &mdash; I'd love to hear from you.
-          </p>
-          <a href="mailto:aidenshin.hba2026@ivey.ca" class="btn btn-primary">aidenshin.hba2026@ivey.ca</a>
-          <div class="social-links">
-            <a href="https://linkedin.com/in/" aria-label="LinkedIn">LinkedIn</a>
-          </div>
-        </div>
+        <footer class="site-footer">
+          <p>© 2026 Aiden Shin</p>
+        </footer>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <p>
-        Designed &amp; built by Aiden Shin
-      </p>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
+  <noscript>
+    <style>.motion-toggle { display: none; }</style>
+  </noscript>
 </body>
 </html>
